@@ -7,12 +7,9 @@ int main()
 {
     int var=0;
     txCreateWindow(750,600);
-    txSetFillColor(TX_BLACK);
     Hero King;
     Map One;
     One.First();
-    King.Draw();
-    One.Draw();
     txBegin();
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -72,13 +69,12 @@ int main()
         {
             Speak3();
             txSleep(500);
-            var=10;
         }
         if(var==0)
             One.First();
         if(var==1)
             One.Second();
-         if(var==2)
+        if(var==2)
             One.Third();
         One.Draw();
         King.Draw();
@@ -86,5 +82,5 @@ int main()
         King.WATS();
         txSleep(125);
     }
-        txEnd();
+    txEnd();
 }
