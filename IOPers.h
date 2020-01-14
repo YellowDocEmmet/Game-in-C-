@@ -1,9 +1,10 @@
 //! @file    IOPers.h
-//! @brief   Библиотека Самой Гениальных персонажей и прочего для Игры не менее Гениального Ивана Орешкова
-//! $Version: 1.0
+//! @brief   Р‘РёР±Р»РёРѕС‚РµРєР° РЎР°РјРѕР№ Р“РµРЅРёР°Р»СЊРЅС‹С… РїРµСЂСЃРѕРЅР°Р¶РµР№ Рё РїСЂРѕС‡РµРіРѕ РґР»СЏ РРіСЂС‹ РЅРµ РјРµРЅРµРµ Р“РµРЅРёР°Р»СЊРЅРѕРіРѕ РРІР°РЅР° РћСЂРµС€РєРѕРІР°
+//! $Version: 1.0.1
 
 class Hero
 {
+    private:
     int q=1;
     public:
     HDC people;
@@ -18,9 +19,7 @@ class Hero
     void Draw();
     void Change();
     ~Hero();
-
 };
-
 
 
 Hero::Hero()
@@ -30,28 +29,30 @@ Hero::Hero()
     color=RGB(255,174,201);
 }
 
-void Hero::WATS() //Указания всех характеристик персонажа
+void Hero::WATS() //РЈРєР°Р·Р°РЅРёСЏ РІСЃРµС… С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє РїРµСЂСЃРѕРЅР°Р¶Р°
 {
     int  s=2;
     char health[80], sila[80];
     txSetColor(TX_LIGHTGRAY);
     txSelectFont("Bookman Old Style", 23);
-    txDrawText  (500, 50, 700, 65, "Ваши характеристики:");
-    txSetColor(TX_ORANGE);
-    txSelectFont("Segoe Script", 33);
-    sprintf(health, "Здоровье: %d", hel);
-    sprintf(sila, "Сила: %d", s);
-    txTextOut(502, 80, health);
-    txTextOut(502, 110, sila);
-    if(hel<=0)
+    if(!GetAsyncKeyState(VK_TAB))
+    {
+        txDrawText  (500, 50, 700, 65, "Р’Р°С€Рё С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:");
+        txSetColor(TX_ORANGE);
+        txSelectFont("Segoe Script", 33);
+        sprintf(health, "Р—РґРѕСЂРѕРІСЊРµ: %d", hel);
+        sprintf(sila, "РЎРёР»Р°: %d", s);
+        txTextOut(502, 80, health);
+        txTextOut(502, 110, sila);
+    }
+    if(hel<=0)                                        //Р•СЃР»Рё Р·РґРѕСЂРѕРІСЊРµ РїРµСЂСЃРѕРЅР°Р¶Р° РїР°РґР°РµС‚ РґРѕ РЅСѓР»СЏ, РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ С‚РµРєСЃС‚ Рѕ РїСЂРѕРёРіСЂС‹С€Рµ
     {
         txClear();
         txSetColor(TX_YELLOW);
         txSelectFont("Segoe Script", 40);
-        txDrawText  (10, 200, 690, 590, "ВЫ УМЕРЛИ. Пустошь поглотила вас.\n"
-        "Энакин, всё кончено, я стою выше тебя!"
-        "Нажми (Esc), чтобы с позором уйти");
-        txSleep(500);
+        txDrawText  (10, 200, 690, 590, "Р’Р« РЈРњР•Р Р›Р. РџСѓСЃС‚РѕС€СЊ РїРѕРіР»РѕС‚РёР»Р° РІР°СЃ.\n"
+        "Р­РЅР°РєРёРЅ, РІСЃС‘ РєРѕРЅС‡РµРЅРѕ, СЏ СЃС‚РѕСЋ РІС‹С€Рµ С‚РµР±СЏ!"
+        " РќР°Р¶РјРё (Esc), С‡С‚РѕР±С‹ СЃ РїРѕР·РѕСЂРѕРј СѓР№С‚Рё");
     }
 }
 
